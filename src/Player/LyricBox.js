@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 
 export default class LyricBox extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.currentLine === nextProps.currentLine && this.props.lrcContent === nextProps.lrcContent) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
+    // console.log('rendering lrcbox');
     const itemHeight = 28;
     return (
       <div className="lyric">
